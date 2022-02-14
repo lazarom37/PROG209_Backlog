@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     
     $(document).on("pagebeforeshow", "#listFinished", function (event) {   
         createList("Finished"); //Flashes on screen the entries for "Finished games" titles, disappears quickly
-        //At the very least flashes the proper entries labeled as "Finished"
+        //At the very least flashes the proper entries labeled as "Finished" meaning that the if condition in createList() is working
     }); 
 
     $(document).on("pagebeforeshow", "#listDropped", function (event) {   
@@ -50,14 +50,12 @@ function createList(displayStatus) {
     myul.innerHTML = '';
 
     noteArray.forEach(function (element,) {   // use handy array forEach method
-        if (element.type == displayStatus){
+        if (element.type == displayStatus) {
             let li = document.createElement('li');
             li.innerHTML = element.data + ":  " + element.type;
             myul.appendChild(li);
         }
     });
-
-    displayStatus = "";
 };
 
 //Future notes
