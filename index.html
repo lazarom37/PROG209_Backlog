@@ -6,9 +6,8 @@
 *   Programmer: Marcus Lazaro
 *   Assignment: HW5 - JQuery Mobile Project Part 1
 *    
-*   Description (1.0): 
+*   Description (1.1): 
 *   This is a program built on top of the provided MyFirstMovie homework
-*   (HW3) meant to illustrate my idea of the project. 
 *
 *   Over the years, access  to video games has become easier both monetarily and conveniently with the
 *   ease of downloadable content and various online storefronts providing sales for hundreds of popular 
@@ -20,13 +19,11 @@
 *   on various platforms and figure out what's been played given a proper chance as well as reconsider coming
 *   back to games once forgottren from the past. Ideally a user's list of games can be exported to be shared
 *   with others through a .txt file.
-*
-*   You can check the version of this site that I built prior to this one within the same Github repository
-*   under the folder name "jqueryLessVersion." Here's a link for your convenience https://github.com/lazarom37/PROG209_HW5
 * 
 *   Revision    Date               Release Comment 
 *   --------     ----------        -------------------------------------
 *   1.0         02/07/2022         Initial Release 
+*   1.1         02/13/2022         Uhhhhhhhhhhh
 *
 -->
 <!DOCTYPE html>
@@ -46,7 +43,7 @@
 <body>
 
 <!-- ================================================================================ -->
-<!-- ===========================HOME===================================================== -->
+<!-- ===========================HOME================================================= -->
 <!-- ================================================================================ -->
 <div data-role="page" id="home">
     <!-- header -->
@@ -54,9 +51,9 @@
         <div data-role="navbar" data-theme='b'>
             <ul>
                 <li><a href="#add">Add games</a></li>
-                <li><a href="#list">Currently playing</a></li>
-                <li><a href="#list">Finished games</a></li>
-                <li><a href="#list">Dropped games</a></li>
+                <li><a href="#listCurrent">Currently playing</a></li>
+                <li><a href="#listFinished">Finished games</a></li>
+                <li><a href="#listDropped">Dropped games</a></li>
             </ul>
         </div><!-- /navbar -->
         <h2>My Video Game Backlog</h2>
@@ -80,7 +77,7 @@
 </div>
 
 <!-- ================================================================================ -->
-<!-- ==============================ADD============================================= -->
+<!-- ==============================ADD=============================================== -->
 <!-- ================================================================================ -->
 
 <div data-role="page" id="add">
@@ -102,17 +99,11 @@
     <!-- content -->
     <div data-role="content" data-theme='e'>
         Name of game <br />
-        <input type="text" value="" id="movie" />
-        Year of game's release<br />
-        <input type="text" value="" id="year" />
-        Name of developer<br />
-        <input type="text" value="" id="dev" />
-        Platform that you are playing the game on<br />
-        <input type="text" value="" id="platform" />
+        <input type="text" value="" id="game" />
         
         <label for="select-type">Select game's status</label>
         <select name="select-type" id="select-type">
-            <option value="Currently playing">Currently playing</option>
+            <option value="Current">Currently playing</option>
             <option value="Finished">Finished</option>
             <option value="Dropped">Dropped</option>
         </select>
@@ -129,7 +120,7 @@
 </div>
 
 <!-- ================================================================================ -->
-<!-- ==============================CURRENT LIST============================================= -->
+<!-- ==============================CURRENT LIST====================================== -->
 <!-- ================================================================================ -->
 
 <div data-role="page" id="listCurrent">
@@ -165,7 +156,7 @@
 </div>
 
 <!-- ================================================================================ -->
-<!-- ==============================FINISHED LIST============================================= -->
+<!-- ==============================FINISHED LIST===================================== -->
 <!-- ================================================================================ -->
 
 <div data-role="page" id="listFinished">
@@ -201,7 +192,7 @@
 </div>
 
 <!-- ================================================================================ -->
-<!-- ==============================DROPPED LIST============================================= -->
+<!-- ==============================DROPPED LIST====================================== -->
 <!-- ================================================================================ -->
 
 <div data-role="page" id="listDropped">
