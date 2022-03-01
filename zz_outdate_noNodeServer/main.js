@@ -1,15 +1,3 @@
-let noteArray = [];
-let tempArray = [];
-let selectedType = "";
-
-// define a constructor to create note objects
-let GameObject = function (pData, pType) {
-    this.data = pData;
-    this.type = pType;
-}
-
-
-
 document.addEventListener("DOMContentLoaded", function (event) {
 
     document.getElementById("buttonAdd").addEventListener("click", function () {
