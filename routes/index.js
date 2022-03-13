@@ -12,9 +12,10 @@ let GameObject = function (pData, pType) {
 }
 
 ServerNoteArray.push(new GameObject("[S] Resident Evil (2002)", "Current"));
-ServerNoteArray.push(new GameObject("[S] Elden Ring", "Current"));
-ServerNoteArray.push(new GameObject("[S] Live A Live", "Current"));
+ServerNoteArray.push(new GameObject("[S] Elden Ring", "Finished"));
+ServerNoteArray.push(new GameObject("[S] Live A Live", "Dropped"));
 
+console.log("This is ServerNoteArray");
 console.log(ServerNoteArray);
 
 // XX END of code copied from Backlog project's main.js
