@@ -8,12 +8,23 @@ let GameObject = function (pData, pType) {
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
-
+    
+    // button add
     document.getElementById("buttonAdd").addEventListener("click", function () {
 
-        noteArray.push(new GameObject(document.getElementById("game").value, selectedType));
-        document.getElementById("game").value = "";
-        console.log(noteArray);
+        let newGame = new GameObject(document.getElementById("game").value, selectedType)
+        
+        //sends newGame to server
+        $.ajax({
+            url : "/AddGame",
+            type: "POST",
+            data: JSON.stringify(newGame),
+            contentType: "application/json; charset=utf-8",
+             success: function (result) {
+                console.log(result);
+            }
+        });
+
     });
 
     $(document).bind("change", "#select-type", function (event, ui) {
@@ -22,26 +33,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     // page before show code *************************************************************************
     $(document).on("pagebeforeshow", "#listCurrent", function (event) {   
-        createList("Current", "contentCurrent");
+        createList("All", "contentAll");
     }); 
-
-    
+    $(document).on("pagebeforeshow", "#listCurrent", function (event) {   
+        createList("Current", "contentCurrent");
+    });     
     $(document).on("pagebeforeshow", "#listFinished", function (event) {   
         createList("Finished", "contentFinished");
     }); 
 
     $(document).on("pagebeforeshow", "#listDropped", function (event) {   
         createList("Dropped", "contentDropped");
-    }); 
-    
+    });  
 });
 
-
-
 function createList(displayStatus, whichList) {
-        //update local array from server
+        //updates local notesArray of server's data
         $.get("/getAllGames", function(data, status){  // AJAX get
-            noteArray = data;  // put the returned server json data into our local array
+            noteArray = data;  // GETS ServerNoteArray and adds it to local noteArray
+
 
         // clear prior data
         let myul = document.getElementById(whichList);
@@ -52,7 +62,11 @@ function createList(displayStatus, whichList) {
                 let li = document.createElement('li');
                 li.innerHTML = element.data + ":  " + element.type;
                 myul.appendChild(li);
+            } else if (displayStatus == "All") {
+                let li = document.createElement('li');
+                li.innerHTML = element.data + ":  " + element.type;
+                myul.appendChild(li);
             }
         });
     });
-};
+}

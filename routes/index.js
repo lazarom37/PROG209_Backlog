@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-// XX BEGINNING of code copied from Backlog project's main.js
-
 let ServerNoteArray = [];
 
 // define a constructor to create note objects
@@ -15,10 +13,7 @@ ServerNoteArray.push(new GameObject("[S] Resident Evil (2002)", "Current"));
 ServerNoteArray.push(new GameObject("[S] Elden Ring", "Finished"));
 ServerNoteArray.push(new GameObject("[S] Live A Live", "Dropped"));
 
-console.log("This is ServerNoteArray");
 console.log(ServerNoteArray);
-
-// XX END of code copied from Backlog project's main.js
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -35,7 +30,7 @@ router.get('/getAllGames', function(req, res) {
 router.post('/AddGame', function(req, res) {
   const newGame = req.body;  // get the object from the req object sent from browser
   console.log(newGame);
-  ServerNotes.push(newGame);  // add it to our "DB"  (array)
+  ServerNoteArray.push(newGame);  // add it to our "DB"  (array)
   // prepare a reply to the browser
   let response = {
     status  : 200,
