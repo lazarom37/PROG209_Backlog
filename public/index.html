@@ -7,7 +7,7 @@
 *   Assignment: HW6 - JQuery Mobile Project
 *    
 *   Description (1.2): 
-*   This is a program has been updated with Node
+*   This is (hopefully) the final version of the project.
 *
 *   Over the years, access  to video games has become easier both monetarily and conveniently with the
 *   ease of downloadable content and various online storefronts providing sales for hundreds of popular 
@@ -26,6 +26,7 @@
 *   1.1         02/13/2022         Pages filter out non-matching items respective to clicked tab, but "finished"
 *                                  and "dropped" entries do not properly display
 *   1.2         03/01/2022         Updated with Node
+*   1.3         03/14/2022         Working delete buttons and theme roller, ideally the final version.
 *
 -->
 <!DOCTYPE html>
@@ -33,13 +34,16 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Movies</title>
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <title>Your Game Backlog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./stylesheets/themes/my-custom-theme.css" />
+    <link rel="stylesheet" href="./stylesheets/themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="./javascripts/main.js"></script>
     <link rel="stylesheet" type="text/css" href="./stylesheets/mycss.css">
 
+    <script src="./javascripts/main.js"></script>
 </head>
 
 <body>
@@ -49,8 +53,8 @@
 <!-- ================================================================================ -->
 <div data-role="page" id="home">
     <!-- header -->
-    <div data-role="header" data-theme='b'>
-        <div data-role="navbar" data-theme='b'>
+    <div data-role="header" data-theme='a'>
+        <div data-role="navbar" data-theme='a'>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#add">Add games</a></li>
@@ -65,7 +69,7 @@
 
 
     <!-- content -->
-    <div data-role="content" data-theme='e'>
+    <div data-role="content" data-theme='a'>
         Bought a lot of games you've been meaning to play? Keep track of what you're playing across all platforms!
         <img src="./images/collection.jpg"></img>
     </div>
@@ -74,8 +78,8 @@
 
 
     <!-- notes footer -->
-    <div data-role="footer" data-theme='b'>
-        <h3>Copyrigtht 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
+    <div data-role="footer" data-theme='a'>
+        <h3>Copyright 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
     </div>
 </div>
 
@@ -85,8 +89,8 @@
 
 <div data-role="page" id="add">
     <!-- header -->
-    <div data-role="header" data-theme='b'>
-        <div data-role="navbar" data-theme='b'>
+    <div data-role="header" data-theme='a'>
+        <div data-role="navbar" data-theme='a'>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#add">Add games</a></li>
@@ -101,7 +105,7 @@
 
 
     <!-- content -->
-    <div data-role="content" data-theme='e'>
+    <div data-role="content" data-theme='a'>
         Name of game <br />
         <input type="text" value="" id="game" />
         
@@ -117,7 +121,7 @@
 
     <h2>List of ALL of your saved games</h2>
     <!-- content -->
-    <div data-role="content" data-theme='e'>
+    <div data-role="content" data-theme='a'>
 
     
         <ul id="contentAll"></ul>
@@ -126,8 +130,8 @@
 
 
     <!-- notes footer -->
-    <div data-role="footer" data-theme='b'>
-        <h3>Copyrigtht 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
+    <div data-role="footer" data-theme='a'>
+        <h3>Copyright 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
     </div>
 </div>
 
@@ -138,8 +142,8 @@
 <div data-role="page" id="listCurrent">
   
     <!-- header -->
-    <div data-role="header" data-theme='b'>
-        <div data-role="navbar" data-theme='b'>
+    <div data-role="header" data-theme='a'>
+        <div data-role="navbar" data-theme='a'>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#add">Add games</a></li>
@@ -154,7 +158,7 @@
 
 
     <!-- content -->
-    <div data-role="content" data-theme='e'>
+    <div data-role="content" data-theme='a'>
 
     
         <ul id="contentCurrent"></ul>
@@ -163,8 +167,8 @@
 
     
     <!-- notes footer -->
-    <div data-role="footer" data-theme='b'>
-        <h3>Copyrigtht 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
+    <div data-role="footer" data-theme='a'>
+        <h3>Copyright 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
     </div>
 </div>
 
@@ -175,8 +179,8 @@
 <div data-role="page" id="listFinished">
   
     <!-- header -->
-    <div data-role="header" data-theme='b'>
-        <div data-role="navbar" data-theme='b'>
+    <div data-role="header" data-theme='a'>
+        <div data-role="navbar" data-theme='a'>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#add">Add games</a></li>
@@ -191,7 +195,7 @@
 
 
     <!-- content -->
-    <div data-role="content" data-theme='e'>
+    <div data-role="content" data-theme='a'>
 
     
         <ul id="contentFinished"></ul>
@@ -200,8 +204,8 @@
 
     
     <!-- notes footer -->
-    <div data-role="footer" data-theme='b'>
-        <h3>Copyrigtht 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
+    <div data-role="footer" data-theme='a'>
+        <h3>Copyright 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
     </div>
 </div>
 
@@ -212,8 +216,8 @@
 <div data-role="page" id="listDropped">
   
     <!-- header -->
-    <div data-role="header" data-theme='b'>
-        <div data-role="navbar" data-theme='b'>
+    <div data-role="header" data-theme='a'>
+        <div data-role="navbar" data-theme='a'>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#add">Add games</a></li>
@@ -228,7 +232,7 @@
 
 
     <!-- content -->
-    <div data-role="content" data-theme='e'>
+    <div data-role="content" data-theme='a'>
 
     
         <ul id="contentDropped"></ul>
@@ -237,8 +241,8 @@
 
     
     <!-- notes footer -->
-    <div data-role="footer" data-theme='b'>
-        <h3>Copyrigtht 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
+    <div data-role="footer" data-theme='a'>
+        <h3>Copyright 2022 by Marcus Lazaro (Kurt Friedrich)</h3>
     </div>
 </div>
 
