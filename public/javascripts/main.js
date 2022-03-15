@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         let newGame = new GameObject(document.getElementById("game").value, selectedType)
         
-        //sends newGame to server
+        //sends object saved in newGame to ServerNoteArray
         $.ajax({
             url : "/AddGame",
             type: "POST",
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 console.log(result);
             }
         });
-
     });
 
     $(document).bind("change", "#select-type", function (event, ui) {
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
 
     // page before show code *************************************************************************
-    $(document).on("pagebeforeshow", "#listCurrent", function (event) {   
+    $(document).on("pagebeforeshow", "#add", function (event) {   
         createList("All", "contentAll");
     }); 
     $(document).on("pagebeforeshow", "#listCurrent", function (event) {   
@@ -66,7 +65,32 @@ function createList(displayStatus, whichList) {
                 let li = document.createElement('li');
                 li.innerHTML = element.data + ":  " + element.type;
                 myul.appendChild(li);
+                addDelButton(li, element.data);
             }
         });
     });
+}
+
+function addDelButton(parent, gameName) {
+    let buttonElem = parent.appendChild(document.createElement("button"));
+    buttonElem.setAttribute("id", + "deleteItem");
+    buttonElem.innerHTML = "Delete";
+    buttonElem.onclick = function() {
+        let answer = confirm("Are you sure you want to delete this entry?");
+        if (answer) {
+            this.parentElement.remove();
+            //Delete entry from server DB
+            let which = gameName;
+            $.ajax({
+                type: "DELETE",
+                url: "/DelGame/" +which,
+                success: function(result){
+                    alert(result);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("Server could not delete Note with title " + which)
+                }
+                });
+        }
+    }
 }

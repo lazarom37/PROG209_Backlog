@@ -9,9 +9,12 @@ let GameObject = function (pData, pType) {
     this.type = pType;
 }
 
-ServerNoteArray.push(new GameObject("[S] Resident Evil (2002)", "Current"));
-ServerNoteArray.push(new GameObject("[S] Elden Ring", "Finished"));
-ServerNoteArray.push(new GameObject("[S] Live A Live", "Dropped"));
+ServerNoteArray.push(new GameObject("[Server] Resident Evil (2002)", "Current"));
+ServerNoteArray.push(new GameObject("[Server] Dragon Quest V", "Current"));
+ServerNoteArray.push(new GameObject("[Server] Elden Ring", "Finished"));
+ServerNoteArray.push(new GameObject("[Server] Pikmin 2", "Finished"));
+ServerNoteArray.push(new GameObject("[Server] Absolver", "Dropped"));
+ServerNoteArray.push(new GameObject("[Server] Dark Souls 3", "Dropped"));
 
 console.log(ServerNoteArray);
 
@@ -34,9 +37,32 @@ router.post('/AddGame', function(req, res) {
   // prepare a reply to the browser
   let response = {
     status  : 200,
-    success : 'Updated Successfully'
+    success : 'Updated Successfully (added)'
   }
   res.end(JSON.stringify(response)); // send reply
+});
+
+/* Delete one game */
+router.delete('/DelGame/:title', (req, res) => {
+  const title = req.params.title;
+  let found = false;
+  console.log(title);
+  for(let i = 0; i < ServerNoteArray.length; i++) // find the match
+  {
+    if(ServerNoteArray[i].data === title){
+      ServerNoteArray.splice(i,1);  // remove object from array
+    found = true;
+    break;
+    }
+  }
+  if (!found) {
+    console.log("not found");
+    return res.status(500).json({
+    status: "error"
+    });
+  } else {
+    res.send('Note ' + title + ' deleted!');
+  }
 });
 
 module.exports = router;
